@@ -20,8 +20,8 @@ our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
- use Config::Source;
-	
+    use Config::Source;
+
     my $config = Config::Source->new;
     $config->add_source( get_default_config() );
     
