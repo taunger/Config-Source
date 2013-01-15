@@ -1,0 +1,8 @@
+Revision history for Config-Source
+
+0.02	2013-01-15
+		add cleanup for tests 01-general and 20-other-Config-General
+
+0.01	2013-01-14
+		First version, released on an unsuspecting world.
+
