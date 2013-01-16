@@ -22,6 +22,12 @@ my $builder = Module::Build->new(
     },
     add_to_cleanup     => [ 'Config-Source-*' ],
     create_makefile_pl => 'traditional',
+
+    meta_merge     => {
+        resources => {
+            repository  => 'https://github.com/taunger/Config-Source'
+        }
+    },
 );
 
 $builder->create_build_script();

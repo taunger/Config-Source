@@ -524,6 +524,10 @@ L<http://cpanratings.perl.org/d/Config-Source>
 
 L<http://search.cpan.org/dist/Config-Source/>
 
+=item * Repository
+
+L<https://github.com/taunger/Config-Source>
+
 =back
 
 
