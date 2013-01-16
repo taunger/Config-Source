@@ -1,4 +1,4 @@
-use 5.12.0;
+use 5.14.0;
 use warnings FATAL => 'all';
 
 use FindBin;
