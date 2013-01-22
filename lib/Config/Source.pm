@@ -12,11 +12,11 @@ Config::Source - manage a configuration from multiple sources
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -405,6 +405,7 @@ sub _load_source {
 	} 
 	elsif ( ref $source eq 'SCALAR' ) {
 		return eval $$source;
+		croak "error parsing scalar source: $@" if $@;
 	}
 	else {
 		open my $fh, '<', $source or croak "error opening $source: $!";
