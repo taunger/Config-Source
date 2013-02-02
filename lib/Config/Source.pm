@@ -12,11 +12,11 @@ Config::Source - manage a configuration from multiple sources
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 SYNOPSIS
 
@@ -215,8 +215,9 @@ sub get {
 	}
 	
 	return 
-		$this->{_}{ $key }	//
-		croak "config key: $key does not exist"
+		exists( $this->{_}{ $key } )
+			? $this->{_}{ $key }
+			: croak "config key: $key does not exist"
 	;
 }
 

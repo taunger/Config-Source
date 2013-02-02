@@ -26,6 +26,11 @@ lives_ok {
 # get
 is( $config->get( 'app.name' ), 'new name', 'get value' );
 
+# test bug in <= 0.04 undefined value
+lives_ok {
+	$config->get( 'bug.undef.value' );
+} 'test bug prior 0.04 undefined value';
+
 # set
 lives_ok { $config->set( 'user.someotherval' => 'TESTVAL' ) } 'test set - 1';
 is( $config->get( 'user.someotherval' ), 'TESTVAL', 'test set - 2' );
@@ -76,6 +81,7 @@ sub default_config {
 'user.somestruct' => [100,200],
 'user.somedeeperstruct' => { a => [1,2,3], b => { c => 'asd' } },
 
+'bug.undef.value' => undef,
 
 } }
 
