@@ -2,7 +2,9 @@ package Config::Source;
 
 use 5.14.0;
 use strict;
+
 use warnings FATAL => 'all';
+no if $] >= 5.018, 'warnings', 'experimental::smartmatch'; # TODO remove SmartMatch
 
 use Carp qw( croak );
 
@@ -16,7 +18,7 @@ Version 0.05
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 SYNOPSIS
 

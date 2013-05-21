@@ -5,7 +5,6 @@ use warnings FATAL => 'all';
 
 use FindBin;
 use File::Spec;
-use Data::Dumper;
 
 use Test::More;
 use Test::Exception;
@@ -27,7 +26,7 @@ sub test {
 	lives_ok { $config->set( 'key2' => $hash ) } 'set a deep structure';
 	
 	isnt( $hash, $config->get( 'key2' ), 'check memory' );
-	is( Dumper( $hash ), Dumper( $config->get( 'key2' ) ), 'check values' );
+	is_deeply( $hash,  $config->get( 'key2' ), 'check values' );
 		
 	# test if getall is clones
 	isnt( $config->getall, $config->getall, 'check getall clones' );

@@ -1,5 +1,10 @@
 Revision history for Config-Source
 
+0.06	2013-05-21
+		fix emitting the SmartMatch Warning in Perl >= 5.18
+		(disabling the warning)
+		removed Hash order dependency in t/CloneTest.pm
+		
 0.05	2013-02-02
 		fix bug, died if you want to get a undef value
 
