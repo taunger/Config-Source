@@ -19,6 +19,7 @@ my $builder = Module::Build->new(
     requires => {
         'Data::Dumper' => 0,
         'Storable' => 0,
+        'List::Uitl' => 1.35, 
     },
     add_to_cleanup     => [ 'Config-Source-*' ],
     create_makefile_pl => 'traditional',

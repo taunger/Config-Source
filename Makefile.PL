@@ -2,16 +2,16 @@
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'PL_FILES' => {},
   'PREREQ_PM' => {
+                   'Data::Dumper' => 0,
                    'Storable' => 0,
-                   'Test::More' => 0,
                    'Test::Exception' => 0,
-                   'Data::Dumper' => 0
+                   'Test::More' => 0
                  },
+  'EXE_FILES' => [],
+  'PL_FILES' => {},
   'NAME' => 'Config::Source',
-  'INSTALLDIRS' => 'site',
   'VERSION_FROM' => 'lib/Config/Source.pm',
-  'EXE_FILES' => []
+  'INSTALLDIRS' => 'site'
 )
 ;

@@ -4,7 +4,8 @@ use 5.14.0;
 use strict;
 
 use warnings FATAL => 'all';
-no if $] >= 5.018, 'warnings', 'experimental::smartmatch'; # TODO remove SmartMatch
+
+use List::Util 1.35 qw( any none );
 
 use Carp qw( croak );
 
@@ -14,11 +15,11 @@ Config::Source - manage a configuration from multiple sources
 
 =head1 VERSION
 
-Version 0.05
+Version 0.07
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 =head1 SYNOPSIS
 
@@ -172,7 +173,7 @@ sub add_source {
 	# delete keys from discard
 	if ( $p{discard} ) {
 		for my $key ( keys %$hash ) {
-			delete $hash->{ $key } if $key ~~ $p{discard};
+			delete $hash->{ $key } if any { $key =~ $_ } @{ $p{discard} };
 		}
 	}
 
@@ -304,7 +305,7 @@ sub reset {
 
 =head2 getall( parameter => value )
 
-Returns clone copy from the configuration hash. Returns a hasref.
+Returns a cloned copy from the configuration hash. This is a hashref.
 
 You can restrict the given keys with the following parameters:
 
@@ -312,11 +313,11 @@ You can restrict the given keys with the following parameters:
 
 =item C<include>
 
-Arrayref with keys or regexes. Only the matched key from the configuration will saved.
+Arrayref with keys or regular expressions. Only the matched keys from the configuration will saved.
 
 =item C<exclude>
 
-Arrayref with keys or regexes. All matched keys will excluded from saving. 
+Arrayref with keys or regular expressions. All matched keys will excluded from saving. 
 Keys matched by include and exclude will excluded.
 
 =back
@@ -335,7 +336,7 @@ sub getall {
 		my $tmp_hash;
 		
 		while ( my ( $key, $value ) = each %$hash ) {
-			if ( $key ~~ $p{include} ) {
+			if ( any { $key =~ $_ } @{ $p{include} } ) {
 				$tmp_hash->{ $key } = $value;
 			}
 		}
@@ -348,7 +349,7 @@ sub getall {
 		my $tmp_hash;
 		
 		while( my ( $key, $value ) = each %$hash ) {
-			if ( not $key ~~ $p{exclude} ) {
+			if ( none { $key =~ $_ } @{ $p{exclude} } ) {
 				$tmp_hash->{ $key } = $value;
 			}
 		}
@@ -510,7 +511,7 @@ You can find documentation for this module with the perldoc command.
 
 You can also look for information at:
 
-=over 4
+=over 20
 
 =item * RT: CPAN's request tracker (report bugs here)
 
@@ -540,7 +541,7 @@ L<https://github.com/taunger/Config-Source>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2013 Tarek Unger.
+Copyright 2013-2014 Tarek Unger.
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of either: the GNU General Public License as published
