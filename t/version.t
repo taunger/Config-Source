@@ -14,7 +14,7 @@ lives_ok {
 	close $fh;
 	
 	$source =~ /Version\s+(\d+\.\d+)/s
-		or die 'Parse error';	
+		or die 'Parse error';
 	
 	my $ver = $1;
 	

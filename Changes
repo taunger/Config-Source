@@ -1,8 +1,9 @@
 Revision history for Config-Source
 
-0.07	2014-
+0.07	2014-06-05
 		add test to control the version string
 		removed Smartmatch dependency and add List::MoreUtils dependency
+		fix "keys on reference is experimental" for perl 5.20 (thanks to Slaven Rezić for the report)
 
 0.06	2013-05-21
 		fix emitting the SmartMatch Warning in Perl >= 5.18

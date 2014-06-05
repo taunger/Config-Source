@@ -276,8 +276,8 @@ If Regex is omitted, all keys are returned.
 sub keys {
 	my ( $this, $regex ) = @_;
 	
-	return sort keys $this->{_} if not defined $regex;
-	return sort grep { /$regex/ } keys $this->{_};
+	return sort keys %{ $this->{_} } if not defined $regex;
+	return sort grep { /$regex/ } keys %{ $this->{_} };
 }
 
 =head2 reset( key, source )
