@@ -1,5 +1,8 @@
 Revision history for Config-Source
 
+0.08	2014-07-03
+		fixed typo in Build.PL (thanks to Slaven Rezić for the report)
+
 0.07	2014-06-05
 		add test to control the version string
 		removed Smartmatch dependency and add List::MoreUtils dependency
